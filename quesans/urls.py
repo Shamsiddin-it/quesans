@@ -1,0 +1,31 @@
+from django.urls import path
+from .views import *
+
+urlpatterns = [
+    path("", Home.as_view(), name="home"),
+    path("category_list/", CategoryListView.as_view(), name="category_list"),
+    path("category_detail/<int:pk>/", CategoryDetailView.as_view(), name="category_detail"),
+    path("category_create/", CategoryCreateView.as_view(), name="category_create"),
+    path("category_update/<int:pk>/", CategoryUpdateView.as_view(), name="category_update"),
+    path("category_delete/<int:pk>/", CategoryDeleteView.as_view(), name="category_delete"),
+    path("subcategory_list/", SubcategoryListView.as_view(), name="subcategory_list"),
+    path("subcategory_detail/<int:pk>/", SubcategoryDetailView.as_view(), name="subcategory_detail"),
+    path("subcategory_create/", SubcategoryCreateView.as_view(), name="subcategory_create"),
+    path("subcategory_update/<int:pk>/", SubcategoryUpdateView.as_view(), name="subcategory_update"),
+    path("subcategory_delete/<int:pk>/", SubcategoryDeleteView.as_view(), name="subcategory_delete"),
+    path("user_list/", UserListView.as_view(), name="user_list"),
+    path("user_detail/<int:pk>/", UserDetailView.as_view(), name="user_detail"),
+    path("user_create/", UserCreateView.as_view(), name="user_create"),
+    path("user_update/<int:pk>/", UserUpdateView.as_view(), name="user_update"),
+    path("user_delete/<int:pk>/", UserDeleteView.as_view(), name="user_delete"),
+    path("question_list/", QuestionListView.as_view(), name="question_list"),
+    path("question_detail/<int:pk>/", QuestionDetailView.as_view(), name="question_detail"),
+    path("question_create/", QuestionCreateView.as_view(), name="question_create"),
+    path("question_update/<int:pk>/", QuestionUpdateView.as_view(), name="question_update"),
+    path("question_delete/<int:pk>/", QuestionDeleteView.as_view(), name="question_delete"),
+    path("answer_list/", AnswerListView.as_view(), name="answer_list"),
+    path("answer_detail/<int:pk>/", AnswerDetailView.as_view(), name="answer_detail"),
+    path("answer_create/", AnswerCreateView.as_view(), name="answer_create"),
+    path("answer_update/<int:pk>/", AnswerUpdateView.as_view(), name="answer_update"),
+    path("answer_delete/<int:pk>/", AnswerDeleteView.as_view(), name="answer_delete"),
+]

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Deatil{% endblock title %}
+{% block content %}
+<style>
+  .card {
+    margin: 1rem; /* Adds space between cards */
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+}
+
+.card-title {
+    font-weight: bold; /* Makes the title stand out */
+    color: #333; /* Sets a darker color for the title */
+}
+
+.card-subtitle {
+    color: #555; /* Sets a softer color for the subtitle */
+}
+
+.card-link {
+    text-decoration: none; /* Removes underline from links */
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.card-link:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+</style>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{category.name}}</h5>
+      <a href="{% url "category_update" category.id %}" class="card-link">Update</a>
+      <a href="{% url "category_delete" category.id %}" class="card-link">Delete</a>
+    </div>
+  </div>
+
+
+  {% for subcategory in category_subcategory %}
+  <a href="{% url "subcategory_detail" subcategory.id %}" class="card-link">
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{subcategory.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{subcategory.category}}</h6>
+        {% comment %} <a href="{% url "question_list" subcategory.id %}" class="card-link">Questions</a> {% endcomment %}
+        <a href="{% url "question_create"  %}" class="card-link">add question</a>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+{% endblock content %}
